@@ -13,7 +13,7 @@ add_external_attachments.blastula_message <- function(object, email)
     {
         if(!is_small_attachment(nchar(object$images[[i]])/0.74))  # allow for base64 bloat
         {
-            warning("Inline images must be < 3MB; will be skipped", call.=FALSE)
+            warning("Inline images must be < 25MB; will be skipped", call.=FALSE)
             next
         }
         body <- list(
@@ -43,7 +43,7 @@ add_external_attachments.envelope <- function(object, email)
     {
         if(!is_small_attachment(length(a$content)))
         {
-            warning("File attachments from emayili > 3MB not currently supported; will be skipped", call.=FALSE)
+            warning("File attachments from emayili > 25MB not currently supported; will be skipped", call.=FALSE)
             next
         }
 
@@ -68,7 +68,7 @@ add_external_attachments.default <- function(object, email)
 }
 
 
-is_small_attachment <- function(filesize, threshold=3e6)
+is_small_attachment <- function(filesize, threshold=25e6)
 {
     filesize <= threshold
 }

@@ -464,7 +464,7 @@ private=list(
             else
             {
                 if(inline)
-                    stop("Inline images must be < 3MB", call.=FALSE)
+                    stop("Inline images must be < 25MB", call.=FALSE)
                 make_large_attachment(object, self)
             }
             return(out)
